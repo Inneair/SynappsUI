@@ -1,0 +1,21 @@
+{
+    "name": "SynappsPackage",
+    "type": "code",
+    "creator": "Inneair",
+    "summary": "JS components for UI",
+    "detailedDescription": "Javascript components based on Ext-JS, to ease UI creation",
+    "version": "1.0.0",
+    "compatVersion": "1.0.0",
+    "format": "1",
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "output": "${package.dir}/build",
+    "local": true,
+    "requires": []
+}
