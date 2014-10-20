@@ -49,6 +49,10 @@ Ext.define('SynappsPackage.controller.SupervisorController', {
      */
     loginFailureMessage: 'Invalid username or password',
 
+    /**
+     * Listener when controller is instanciated. Create {Ext.data.Session} to share data between stores, instanciate
+     * Authentication Manager and Account Manager and getcurrent account.
+     */
     onLaunch: function() {
         /*Ext.Error.handle = function(err) {
             if (err.someProperty == 'NotReallyAnError') {
@@ -56,13 +60,11 @@ Ext.define('SynappsPackage.controller.SupervisorController', {
                 return true;
             }
             // any non-true return value (including none) will cause the error to be thrown
-        };
+        };*/
 
-        this.session = new Ext.data.Session({
+        this.session = Ext.create('Ext.data.Session', {
             autoDestroy: false
-        });*/
-
-        this.session = Ext.create('Ext.data.Session', { autoDestroy: false });
+        });
 
         this.authenticationManager = Ext.create('SynappsPackage.service.AuthenticationManager', {
             urlLogin: SynappsPackage.Configuration.getUrlLogin(),

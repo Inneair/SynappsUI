@@ -2,8 +2,7 @@ Ext.define('SynappsPackage.model.Credentials', {
     extend: 'Ext.data.Model',
 
     requires: [
-        'SynappsPackage.data.field.Email',
-        'SynappsPackage.data.field.Password'
+        'Ext.data.field.String'
     ],
 
     fields: [
