@@ -2,10 +2,10 @@ Ext.define('SynappsPackage.view.auth.Login',{
     extend: 'Ext.window.Window',
 
     requires: [
-        'SynappsPackage.view.auth.LoginController'/*,
+        'SynappsPackage.view.auth.LoginController',
         //'SynappsPackage.view.auth.LoginModel',
         'Ext.form.Panel',
-        'Ext.form.field.Text',
+        'Ext.form.field.Text'/*,
         'Ext.form.field.Checkbox',
         'Ext.button.Button'*/
     ],
