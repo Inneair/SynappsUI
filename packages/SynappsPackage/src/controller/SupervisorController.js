@@ -49,6 +49,15 @@ Ext.define('SynappsPackage.controller.SupervisorController', {
      */
     loginFailureMessage: 'Invalid username or password',
 
+    /**
+     * Gets the application configuration. This method shall be overriden to return custom configuration, by extending
+     * the SynappsPackage.Configuration class.
+     * @return {SynappsPackage.Configuration} The configuration.
+     */
+    getConfiguration: function() {
+        return Ext.create('SynappsPackage.Configuration');
+    },
+
     onLaunch: function() {
         /*Ext.Error.handle = function(err) {
             if (err.someProperty == 'NotReallyAnError') {
@@ -64,9 +73,10 @@ Ext.define('SynappsPackage.controller.SupervisorController', {
 
         this.session = Ext.create('Ext.data.Session', { autoDestroy: false });
 
+        configuration = this.getConfiguration();
         this.authenticationManager = Ext.create('SynappsPackage.service.AuthenticationManager', {
-            urlLogin: SynappsPackage.Configuration.getUrlLogin(),
-            urlLogout: SynappsPackage.Configuration.getUrlLogout()
+            loginPath: configuration.getLoginPath(),
+            logoutPath: configuration.getLogoutPath()
         });
         this.authenticationManager.addListener({
             scope: this,
@@ -77,7 +87,7 @@ Ext.define('SynappsPackage.controller.SupervisorController', {
         });
 
         this.accountManager = Ext.create('SynappsPackage.service.AccountManager', {
-            urlGetAccount: SynappsPackage.Configuration.getUrlGetAccount()
+            getAccountPath: configuration.getGetAccountPath()
         });
         this.accountManager.getCurrent(this.showUI, this);
     },

@@ -1,27 +1,65 @@
 Ext.define('SynappsPackage.Configuration', {
-    singleton: true,
 
     config: {
         /**
          * @property {String}
-         * Message to display on login failure.
+         * Application base path.
          */
-        urlLogin: '/admin/login_check',
+        basePath: '',
         /**
          * @property {String}
-         * Message to display on login failure.
+         * Path to get an account.
          */
-        urlLogout: '/admin/logout',
+        getAccountPath: '/admin/account',
         /**
          * @property {String}
-         * Message to display on login failure.
+         * Path to login a user.
          */
-        urlGetAccount: '/admin/account'
+        loginPath: '/admin/login_check',
+        /**
+         * @property {String}
+         * Path to logout a user.
+         */
+        logoutPath: '/admin/logout'
     },
 
+    /**
+     * Builds configuration for the package. If there is a 'meta' element in the document having the name
+     * 'synapps-base', it will be used to prefix all generated paths.
+     */
     constructor: function(config) {
+        var baseElements = document.getElementsByName('synapps-base');
+        if ((baseElements.length === 1) && (baseElements[0].tagName === 'META')) {
+            if (typeof config !== 'object') {
+                config = {};
+            }
+            config.basePath = baseElements[0].content;
+        }
         this.initConfig(config);
-
         return this;
+    },
+
+    /**
+     * Prepends the application base path to the updated path to get an account.
+     * @return {String} Path.
+     */
+    applyGetAccountPath: function(getAccountPath) {
+        return this.getBasePath() + getAccountPath;
+    },
+
+    /**
+     * Prepends the application base path to the updated path to login.
+     * @return {String} Path.
+     */
+    applyLoginPath: function(loginPath) {
+        return this.getBasePath() + loginPath;
+    },
+
+    /**
+     * Prepends the application base path to the updated path to logout.
+     * @return {String} Path.
+     */
+    applyLogoutPath: function(logoutPath) {
+        return this.getBasePath() + logoutPath;
     }
 });

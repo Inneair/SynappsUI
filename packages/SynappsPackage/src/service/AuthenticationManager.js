@@ -36,18 +36,18 @@ Ext.define('SynappsPackage.service.AuthenticationManager', {
 
     config: {
         /**
-         * @cfg {string} urlLogin
+         * @cfg {string} loginPath
          * URL to check credential login. Must send HTTP_STATUS_CODE_UNAUTHORIZED if failure,
          * HTTP_STATUS_CODE_NO_CONTENT in success
          */
-        urlLogin: null,
+        loginPath: null,
 
         /**
-         * @cfg {string} urlLogout
+         * @cfg {string} logoutPath
          * URL to logout. Must send HTTP_STATUS_CODE_NO_CONTENT in success (operation success, already logout,
          * connection not found, etc.)
          */
-        urlLogout: null
+        logoutPath: null
     },
 
     HTTP_STATUS_CODE_NO_CONTENT: 204,
@@ -77,14 +77,14 @@ Ext.define('SynappsPackage.service.AuthenticationManager', {
 
         // [HTTP Status Code Definitions 401](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2)
         // TODO need to intercept or store chalenge to compare ?
-        if (status == me.HTTP_STATUS_CODE_UNAUTHORIZED && options.url != me.getUrlLogin()) {
+        if ((status == me.HTTP_STATUS_CODE_UNAUTHORIZED) && (options.url != me.getLoginPath())) {
             me.fireEvent('unauthorized', me, options);
             // TODO cancel further Ajax requests ? need to know then protected urls ? remove this on login success ?
         }
     },
 
     /**
-     * Send credentials data to {@link #urlLogin} to log in user.
+     * Send credentials data to {@link #loginPath} to log in user.
      *
      * @param {SynappsPackage.model.Credentials} credentials
      * @param {Object} originalRequestOptions The options config object passed to the original {@link #request} method,
@@ -97,7 +97,7 @@ Ext.define('SynappsPackage.service.AuthenticationManager', {
         // [HTTP Status Code Definitions 401](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2)
         // TODO send cendentials with Authorization header field ?
         Ext.Ajax.request({
-            url: this.getUrlLogin(),
+            url: this.getLoginPath(),
             params: data,
             scope: this,
             callback: this.onLoginReturn,
@@ -133,17 +133,17 @@ Ext.define('SynappsPackage.service.AuthenticationManager', {
         }
 
         Ext.Error.raise({
-            msg: 'Invalid response status get back from ' + me.getUrlLogin() + ' when login.',
+            msg: 'Invalid response status get back from ' + me.getLoginPath() + ' when login.',
             reponse: response
         });
     },
 
     /**
-     * Call {@link #urlLogout} to log out user.
+     * Call {@link #logoutPath} to log out user.
      */
     logout: function(){
         Ext.Ajax.request({
-            url: this.getUrlLogout(),
+            url: this.getLogoutPath(),
             method: 'GET',
             scope: this,
             callback: this.onLogoutReturn
@@ -172,7 +172,7 @@ Ext.define('SynappsPackage.service.AuthenticationManager', {
         }
 
         Ext.Error.raise({
-            msg: 'Invalid response get back from ' + me.getUrlLogout() + ' when logout.',
+            msg: 'Invalid response get back from ' + me.getLogoutPath() + ' when logout.',
             reponse: response
         });
     }

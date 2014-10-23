@@ -18,11 +18,11 @@ Ext.define('SynappsPackage.service.AccountManager', {
 
     config: {
         /**
-         * @cfg {string} urlLogin
+         * @cfg {string} getAccountPath
          * URL to check credential login. Must send HTTP_STATUS_CODE_UNAUTHORIZED if failure,
          * HTTP_STATUS_CODE_NO_CONTENT in success
          */
-        urlGetAccount: null
+        getAccountPath: null
     },
 
     /**
@@ -37,7 +37,7 @@ Ext.define('SynappsPackage.service.AccountManager', {
     },
 
     /**
-     * Get current connected account from {@link #urlGetAccount} url.
+     * Get current connected account from {@link #getAccountPath} url.
      *
      * @param callback
      * @param scope
@@ -45,7 +45,7 @@ Ext.define('SynappsPackage.service.AccountManager', {
     getCurrent: function(callback, scope){
         var me = this;
         Ext.Ajax.request({
-            url: this.getUrlGetAccount(),
+            url: this.getGetAccountPath(),
             method: 'GET',
             scope: scope,
             success: function(response, options){
