@@ -4,7 +4,7 @@
     "creator": "Inneair",
     "summary": "JS components for UI",
     "detailedDescription": "Javascript components based on Ext-JS, to ease UI creation",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "compatVersion": "1.0.0",
     "format": "1",
     "slicer": {
