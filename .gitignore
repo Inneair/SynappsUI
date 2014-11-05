@@ -1,5 +1,5 @@
+.idea
 .project
-.sencha
-.settings
+bower_components
+node_modules
 build
-ext
