@@ -36,8 +36,8 @@ Il s'agit d'utiliser les meilleures technologies pour rendre :
 [project-setup-scratch]: <project-setup.md#scratch> (Initialisation depuis un répertoire vide)
 [project-setup-template]: <project-setup.md#template> (Initialisation depuis un modèle)
 
-[dev-workflow]: <dev-worflow.md> (Workflow de développement)
-[dev-workflow-commands]: <dev-worflow.md#commands> (Commandes élémentaires)
-[dev-workflow-sourcelayout]: <dev-worflow.md#sourcelayout> (Structure du code source)
-[dev-workflow-injection]: <dev-worflow.md#injection> (Injection à la volée)
-[dev-workflow-development]: <dev-worflow.md#developpement> (Développement)
+[dev-workflow]: <dev-workflow.md> (Workflow de développement)
+[dev-workflow-commands]: <dev-workflow.md#commands> (Commandes élémentaires)
+[dev-workflow-sourcelayout]: <dev-workflow.md#sourcelayout> (Structure du code source)
+[dev-workflow-injection]: <dev-workflow.md#injection> (Injection à la volée)
+[dev-workflow-development]: <dev-workflow.md#developpement> (Développement)
