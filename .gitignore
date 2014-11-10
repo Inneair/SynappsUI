@@ -1,5 +1,8 @@
-.idea
-.project
-bower_components
-node_modules
-build
+/.idea/
+/.settings/
+/bower_components/
+/build/
+/node_modules/
+/**/.*.md.html
+/.buildpath
+/.project
