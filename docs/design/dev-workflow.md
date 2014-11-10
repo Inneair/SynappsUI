@@ -1,46 +1,62 @@
-# Workflow de développement
+# Processus de développement
 
-## 1. <a name="serveurs"></a>Serveurs
+## <a name="sourcelayout"></a>1. Structure du code source
+- Le répertoire `app` contient l'ensemble des fichiers sources de l'application front.
+- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, ...).
+- Le répertoire `app/css` contient les feuilles de style CSS.
+- Le répertoire `app/javascript` contient les scripts Javascript.
+- Le répertoire `public` est généré automatiquement par Brunch lors de la compilation. Le serveur fb-flo scrute ce
+répertoire pour y détecter toute modification de fichier.
 
-1. Se placer dans le répertoire du projet à tester. 
-
-1. Lancer Brunch en mode "watch", afin de repèrer toute modification de fichier. Dès qu'il y a un changement, il va
-construire à nouveau le package de l'application.
-En lançant le serveur web en même temps, vous avez la possibilité d'accéder au package directement via une url.
+## <a name="commands"></a>2. Commandes élémentaires
+### 2.1. Compilation
+La compilation des script Javascript et des feuilles de Style CSS s'effectue à l'aide d'une des commandes suivantes :
+```sh
+brunch build [--production]
+brunch b [-P]
 ```
-brunch w -s
-```
-(raccourci de `brunch watch --server`)
-Brunch va automatiquement créer un package de développement dans le répertoire `build` à la racine du projet (par
-défaut; peut être configuré dans les [paramètres de Brunch][brunch-config]).
-Le serveur web Brunch utilise ce répertoire comme racine de site.
+Les options `-P` et `--production` permettent d'optimiser la compilation en vue d'un déploiement sur un environnement de
+production.
 
-1. Lancer le serveur FB-FLO :
+### 2.2. Publication d'un package
+
+__TBD__
+
+## <a name="injection"></a>3. Injection à la volée
+L'injection à la volée permet de rafraîchir automatiquement une page visualisée dans un navigateur Chrome, dès qu'une
+modification a lieu sur une des ressources utilisées dans la page. Les étapes décrites ci-dessous ne sont pas
+obligatoires pour développer, mais peuvent grandement accélérer le test de modifications
+
+- Se placer dans le répertoire racine du projet. 
+- Démarrer la compilation à la volée de Brunch avec l'une des commandes suivantes :
+
+  ```sh
+brunch watch [-server]
+brunch w [-s]
 ```
+Les options `-s` et `--server` démarrent un serveur HTTP, pour permettre d'accéder aux ressources du répertoire
+`public`. Cette option est utile dans le cas où aucun serveur HTTP n'est installé ou configuré sur le poste de
+développement pour visualiser ces ressources. Cette commande, raccourci de `brunch watch [--server]`, va automatiquement
+compiler - via la commande `brunch build` - dans le répertoire `public` les ressources générées dynamiquement (scripts
+Javascript et feuilles de style CSS), et copier les ressources statiques. Ce répertoire est paramétrable dans la
+[configuration de Brunch][brunch-config].
+
+- Démarrer le serveur fb-flo pour détecter les modifications à chaud dans le répertoire `public` :
+
+  ```sh
 node flo.js
 ```
 
-1. Ouvrir l’application dans CHROME, avec l’url définie par le serveur de Brunch <http://localhost:3333> ou avec votre
-propre serveur web
+- Ouvrir le navigateur Chrome, et accéder à la page principale de l'application (l'URL peut alors cibler un serveur HTTP
+type Apache, ou le serveur HTTP Brunch situé par défaut à l'adresse <http://localhost:3333>).
 
-1. Ouvrir les DEV TOOLS de CHROME.
+- Dans Chrome, ouvrir les outils de développement.
+- Vérifier que l'extension fb-flo est activée (option dans l'onglet 'flo' des outils de développement).
 
-1. Activer le module FB-FLO
 
-## 2. <a name="developpement"></a>Développement
-Modifier les sources avec son éditeur préféré (PHPStorm, Eclipse, Sublime Text, etc.).
-Les sources étant automatiquement compilées et injectées dans Chrome, il suffit d'accéder à l'application pour voir
-directement les changements opérés.
-
-## 3. <a name="packaging"></a>Packaging
-Le packaging de l’application pour la production s'effectue avec la commande suivante, après une extraction GIT clean.
-```
-npm i --production
-brunch b -P
-```
-(raccourci de `brunch build --production`)
-
-D'autres environnements peuvent être créés (se référer à la [configuration de Brunch][brunch-config]) 
-
+## <a name="developpement"></a>4. Développement
+Si l'injection à la volée a été activée (cf. paragraphe précédent), les fichiers sources sont automatiquement compilés
+et le résultat de la compilation ré-injecté dans le navigateur Chrome, dès qu'une modification a lieu. Il n'est alors
+plus nécessaire de rafraîchir la page (cas des scripts Javascript et des feuilles de style CSS).
 
 [brunch-config]: <https://github.com/brunch/brunch/blob/stable/docs/config.md> (Configuration de Brunch)
