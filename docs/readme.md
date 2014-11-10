@@ -9,9 +9,9 @@
   1. [Terminologie documentaire][terminology-document]
 1. [Guide de rédaction][guide]
 
-[design]: <design/README.md> (Conception technique)
-[terminology]: <TERMINOLOGY.md> (Terminologie)
-[terminology-business]: <TERMINOLOGY.md#business> (Terminologie métier)
-[terminology-technical]: <TERMINOLOGY.md#technical> (Terminologie technique)
-[terminology-document]: <TERMINOLOGY.md#document> (Terminologie documentaire)
-[guide]: <GUIDE.md> (Guide de rédaction)
+[design]: <design/readme.md> (Conception technique)
+[terminology]: <terminology.md> (Terminologie)
+[terminology-business]: <terminology.md#business> (Terminologie métier)
+[terminology-technical]: <terminology.md#technical> (Terminologie technique)
+[terminology-document]: <terminology.md#document> (Terminologie documentaire)
+[guide]: <guide.md> (Guide de rédaction)
