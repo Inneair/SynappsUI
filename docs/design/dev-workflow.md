@@ -1,10 +1,8 @@
 # Processus de développement
 
 ## <a name="sourcelayout"></a>1. Structure du code source
-- Le répertoire `app` contient l'ensemble des fichiers sources de l'application front.
-- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, ...).
-- Le répertoire `app/css` contient les feuilles de style CSS.
-- Le répertoire `app/javascript` contient les scripts Javascript.
+- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, CSS, etc.).
+- Le répertoire `app` contient les scripts Javascript, en dehors du sous-répertoire `assets`.
 - Le répertoire `public` est généré automatiquement par Brunch lors de la compilation. Le serveur fb-flo scrute ce
 répertoire pour y détecter toute modification de fichier.
 

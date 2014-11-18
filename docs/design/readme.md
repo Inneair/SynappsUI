@@ -24,8 +24,29 @@ Il s'agit d'utiliser les meilleures technologies pour rendre :
   1. [Injection à la volée][dev-workflow-injection]
   1. [Développement][dev-workflow-development]
 1. [L'application en détails][application]
+  1. [Le framework][application-fwk]
+    1. Initialisation
+    1. Injection de dépendances
+    1. Structure du code source
+      1. Fichiers de configuration
+      1. Vues HTML
+      1. Feuilles de style CSS
+      1. Scripts Javascript
+    1. Modèles de programmation
+      1. Modules
+        1. Module d'application
+        1. Module métier
+        1. Configuration Brunch
+      1. Modèles métier
+        1. Sans dépendance
+        1. Avec dépendance
+      1. Services
+        1. Modèle
+        1. Configuration
+      1. Contrôleurs
 
 [application]: <application/readme.md> (L'application en détails)
+[application-fwk]: <application/readme.md#framework> (Le framework)
 
 [dev-environment]: <dev-environment.md> (Environnement de développement)
 
