@@ -1,23 +1,9 @@
 {
-  "name": "SynappsUI",
-  "version": "1.0.0",
-  "description": "Application starter",
-  "main": "public/index.html",
   "scripts": {
     "test": "brunch test",
     "brunch": "brunch w -s",
     "flo": "node flo.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Inneair/SynappsUI.git"
-  },
-  "author": "Vincent Clair",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Inneair/SynappsUI/issues"
-  },
-  "homepage": "https://github.com/Inneair/SynappsUI",
   "dependencies": {
     "clean-css-brunch": "^1.7.1",
     "coffee-script-brunch": "^1.8.1",
@@ -27,5 +13,8 @@
     "jshint-brunch": "^1.7.0",
     "stylus-brunch": "^1.8.1",
     "uglify-js-brunch": "^1.7.7"
+  },
+  "optionalDependencies": {
+    "fb-flo": "^0.3.1"
   }
 }

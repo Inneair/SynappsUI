@@ -10,6 +10,9 @@ supprimant l'option `-g` qui suit la commande `npm install`.
 Node est un middleware pour l'exécution de code Javascript, sans nécessiter l'installation d'un navigateur. Node fournit
 également l'installeur NPM, permettant d'installer et exécuter facilement des applications Javascript.
 
+Node est utilisé pour l'exécution des outils de construction (build) et de test. Il n'est pas utilisé pour l'exécution
+de l'application.
+
 - Télécharger et installer Node.
 
 __Note__ : sous Windows, télécharger l'installeur `MSI`, car l'exécutable seul `node.exe` ne donne pas accès à

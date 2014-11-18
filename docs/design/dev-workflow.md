@@ -31,7 +31,7 @@ obligatoires pour développer, mais peuvent grandement accélérer le test de mo
 - Démarrer la compilation à la volée de Brunch avec l'une des commandes suivantes :
 
   ```sh
-brunch watch [-server]
+brunch watch [--server]
 brunch w [-s]
 ```
 Les options `-s` et `--server` démarrent un serveur HTTP, pour permettre d'accéder aux ressources du répertoire

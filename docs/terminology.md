@@ -53,6 +53,12 @@ __LDAP__ : Lightweight Directory Application Protocol
 
 __PHP__ : Hypertext Preprocessor
 
+__SPA__ : Single Page Application
+
+    Désigne une interface graphique web, accessible sur un navigateur, constituée d'une seule page HTML. Cette page
+    n'est jamais rafraîchie. L'ensemble des échanges de données s'opérent de façon transparente, à l'aide d'AJAX ou d'un
+    autre système.
+
 ## <a name="document"></a>3. Terminologie documentaire
 
 __N/A__ : Non Applicable

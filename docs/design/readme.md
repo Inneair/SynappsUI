@@ -23,21 +23,24 @@ Il s'agit d'utiliser les meilleures technologies pour rendre :
     1. Publication d'un package
   1. [Injection à la volée][dev-workflow-injection]
   1. [Développement][dev-workflow-development]
+1. [L'application en détails][application]
 
-[technologies]: <technologies.md> (Technologies)
-[technologies-base]: <technologies.md#base> (Technologies - Base)
-[technologies-meta-langages]: <technologies.md#meta-langages> (Technologies - Méta-langages)
-[technologies-frameworks]: <technologies.md#frameworks> (Technologies - Frameworks)
-[technologies-tools-packaging]: <technologies.md#tools-packaging> (Technologies - Outils de développement et packaging)
+[application]: <application/readme.md> (L'application en détails)
 
 [dev-environment]: <dev-environment.md> (Environnement de développement)
-
-[project-setup]: <project-setup.md> (Initialisation du projet)
-[project-setup-scratch]: <project-setup.md#scratch> (Initialisation depuis un répertoire vide)
-[project-setup-template]: <project-setup.md#template> (Initialisation depuis un modèle)
 
 [dev-workflow]: <dev-workflow.md> (Workflow de développement)
 [dev-workflow-commands]: <dev-workflow.md#commands> (Commandes élémentaires)
 [dev-workflow-sourcelayout]: <dev-workflow.md#sourcelayout> (Structure du code source)
 [dev-workflow-injection]: <dev-workflow.md#injection> (Injection à la volée)
 [dev-workflow-development]: <dev-workflow.md#developpement> (Développement)
+
+[project-setup]: <project-setup.md> (Initialisation du projet)
+[project-setup-scratch]: <project-setup.md#scratch> (Initialisation depuis un répertoire vide)
+[project-setup-template]: <project-setup.md#template> (Initialisation depuis un modèle)
+
+[technologies]: <technologies.md> (Technologies)
+[technologies-base]: <technologies.md#base> (Technologies - Base)
+[technologies-meta-langages]: <technologies.md#meta-langages> (Technologies - Méta-langages)
+[technologies-frameworks]: <technologies.md#frameworks> (Technologies - Frameworks)
+[technologies-tools-packaging]: <technologies.md#tools-packaging> (Technologies - Outils de développement et packaging)
