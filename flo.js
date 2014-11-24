@@ -17,6 +17,7 @@ function resolver(filepath, callback) {
     var fullPath = path.resolve(dir, filepath);
     callback({
         resourceURL: filepath,
+        reload: !filepath.match(/\.(css|js)$/),
         contents: fs.readFileSync(fullPath).toString()
     });
 }

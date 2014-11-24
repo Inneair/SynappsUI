@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "test": "brunch test",
-    "brunch": "brunch w -s",
-    "flo": "node flo.js"
+    "test": "karma start test/karma.conf.js",
+    "postinstall": "bower install --config.interactive=false",
+    "start": "brunch w -s"
   },
   "dependencies": {
     "clean-css-brunch": "^1.7.1",

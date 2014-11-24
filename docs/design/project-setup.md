@@ -121,6 +121,11 @@ exports.config =
 ```
 
 ### Configuration fb-flo
+Lier localement fb-flo pour pouvoir utiliser la librairie en lançant le serveur local.
+```sh
+npm link fb-flo
+```
+
 Create a `flo.js` file in the project root directory for the front synchronization server, with this content:
 ```javascript
 'use strict';
