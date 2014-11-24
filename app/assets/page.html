@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app-1.1.0.css">
+</head>
+<body class="page">
+    <header class="ui header">
+        <a class="ui basic icon button" href="pages.html" style="display: inline-block; font-size: 1rem; padding: 0.8em;">
+            <i class="angle left icon" style="margin-right: 0;"></i>
+        </a>
+        My title page
+        <div class="ui basic button" id="propertiesButton">
+            properties<!--<i class="icon settings"></i>-->
+        </div>
+        <div class="ui basic button">
+            validate draft<!--<i class="icon settings"></i>-->
+        </div>
+        <!--<a class="ui basic button" href="page-properties.html">
+            properties&lt;!&ndash;<i class="icon settings"></i>&ndash;&gt;
+        </a>-->
+    </header>
+    <nav>
+        <div class="ui vertical text menu">
+            <!--<div class="header item">Dashboard</div> Pas de "dashboard" donnée directement la liste des pages en
+            brouillon, ou à défaut des pages récemment publiées avec le lien racourci pour ajouter une nouvelle page.
+            Le bouton de création de page doit être également accessible tout le temps ("+" à côté du menu "Pages" ?)-->
+            <!--<div class="header item">Editor</div>-->
+            <a class="active item">Pages</a>
+            <!--<a class="item">Data</a>-->
+            <!--<a class="item">Website</a>-->
+            <!--<div class="header item">Studio</div>-->
+            <!--<a class="item">Schemas</a>-->
+            <!--<a class="item">Views</a>-->
+            <a class="item" href="views.html">Design</a>
+            <!--<a class="item">Medias</a>-->
+            <!--<a class="item">Menus</a>-->
+            <a class="item">Settings</a>
+            <a class="item">Help</a>
+        </div>
+        <a class="ui item">
+            <img src="http://lorempicsum.com/up/60/60/1" class="ui circular image">
+            <div class="content">
+                Vincent C.
+            </div>
+        </a>
+    </nav>
+    <main>
+        <!--<div class="ui ribbon orange label">Draft</div>-->
+        <div class="ui inverted dimmer">
+            <div class="ui form">
+                <a href="" name=""></a>
+                <h2 class="ui dividing header">Metas</h2>
+                <div class="field">
+                    <label>URL</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>URL canonical</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>Postion dans le menu</label>
+                    <input type="text">
+                </div>
+                <div class="inline date fields">
+                    <div class="date field">
+                        <label>Begin date</label>
+                        <input type="text" placeholder="xx/xx/xxxx">
+                    </div>
+                    <div class="time field">
+                        <input type="text" placeholder="xx:xx">
+                    </div>
+                </div>
+                <div class="inline date fields">
+                    <div class="date field">
+                        <label>End date</label>
+                        <input type="text" placeholder="xx/xx/xxxx">
+                    </div>
+                    <div class="time field">
+                        <input type="text" placeholder="xx:xx">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Parent page</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>301 redirection AFTER end date (parent page by default)</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>Style</label>
+                    <input type="text">
+                </div>
+
+                <h2 class="ui dividing header">SEO</h2>
+                <div class="inline field">
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" checked>
+                        <label>Index</label>
+                    </div>
+                </div>
+                <div class="inline field">
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" checked>
+                        <label>Follow</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea></textarea>
+                </div>
+
+                <h2 class="ui dividing header">Raw fields</h2>
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>Content</label>
+                    <textarea></textarea>
+                </div>
+                <div class="date field">
+                    <label>Keywords</label>
+                    <input type="text">
+                </div>
+                <div class="field">
+                    <label>Category</label>
+                    <select class="ui dropdown">
+                        <option value="">Gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Author</label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <iframe src="http://www.inneair.com"></iframe>
+    </main>
+
+    <script src="js/vendor.js"></script>
+    <script src="js/app-1.1.0.js"></script>
+</body>
+</html>

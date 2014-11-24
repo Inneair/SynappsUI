@@ -1,0 +1,9 @@
+[{
+    "name": "Page 1",
+    "id": 1,
+    "online": true
+}, {
+    "name": "Page 2",
+    "id": 2,
+    "online": false
+}]

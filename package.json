@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "test": "karma start test/karma.conf.js",
+    "postinstall": "bower install --config.interactive=false",
+    "start": "brunch w -s"
+  },
+  "dependencies": {
+    "clean-css-brunch": "^1.7.1",
+    "coffee-script-brunch": "^1.8.1",
+    "coffeelint-brunch": "^1.7.0",
+    "css-brunch": "^1.7.0",
+    "javascript-brunch": "^1.7.1",
+    "jshint-brunch": "^1.7.0",
+    "stylus-brunch": "^1.8.1",
+    "uglify-js-brunch": "^1.7.7"
+  },
+  "optionalDependencies": {
+    "fb-flo": "^0.3.1"
+  }
+}

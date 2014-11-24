@@ -1,0 +1,47 @@
+.page
+  nav
+    display none
+
+  main
+    left 1.5rem
+    top 5.5rem
+    box-shadow 0 3px 10px rgba(0,0,0,0.1)
+
+  > .ui.header
+    //position relative
+    //left 18rem
+
+    .ui.basic.button:first-child
+      margin-right 1em
+
+    .ui.basic.button:last-child
+      margin-left 1em
+
+.ui.form
+  height 100%
+  overflow auto
+
+.ui.form .ui.header
+  margin-top 3rem
+  color rgba(0, 0, 0, 0.8)
+
+.ui.form > *, .ui.form > .field, .ui.form > .fields, .ui.form > .inline.fields
+  max-width 800px
+  margin 0 auto 1em
+
+.ui.form input[type="text"], .ui.form input[type="email"], .ui.form input[type="date"], .ui.form input[type="password"], .ui.form input[type="number"], .ui.form input[type="url"], .ui.form input[type="tel"], .ui.form textarea
+  border-width 0
+
+.dimmable
+  position absolute
+
+.dimmed iframe
+  -webkit-filter blur(200px)
+  -moz-filter blur(200px)
+  -o-filter blur(200px)
+  -ms-filter blur(200px)
+  filter blur(200px)
+  box-shadow 0 3px 10px rgba(0,0,0,0.1)
+
+.ui.dimmer
+  text-align left

@@ -1,0 +1,107 @@
+body, html
+  margin 0
+  padding 0
+  width 100%
+  height 100%
+
+html
+  font-size 14px
+  font-weight 300
+
+body
+  background-color #eee
+  color #333
+  font-family 'Helvetica Neue', 'Open Sans', sans-serif;
+
+  &.inverted
+    background-color #222
+    color #666
+
+    .ui.input input
+      background-color #333
+      color #aaa
+      border-color transparent
+
+      &::-webkit-input-placeholder
+        color #666
+      &::-moz-placeholder
+        color #666
+      &:-ms-input-placeholder
+        color #666
+
+.ui.cards .card
+  width 150px
+  min-height 300px
+  border 0
+  padding 0
+  box-shadow none
+
+.ui.cards > .card
+  background-color transparent
+  /*margin 0em 4.5em 2.5em .5em*/
+
+.ui.cards .card > .image
+  box-shadow 0 3px 10px rgba(0,0,0,0.2)
+
+.ui.cards a.card:hover
+  box-shadow none
+
+.ui.cards a.card:hover > .image
+  //box-shadow
+  //outline solid 1px #2191cb
+  box-shadow 0 3px 10px rgba(0,0,0,0.5)
+
+.inverted .ui.cards a.card:hover > .image
+  //box-shadow 0 3px 10px rgba(0,0,0,0.9)
+  box-shadow 0 3px 10px rgba(0,0,0,0.9)
+
+.nav .ui.menu
+  text-align center
+
+.ui.input input
+  border transparent
+  background-color #ddd
+
+.pages main .ui.items
+  height 300px
+  overflow auto
+
+.views main .ui.cards
+  margin-top 2.5em
+  height 400px
+  overflow auto
+
+.pages main .ui.items > .item .content
+  font-size: 1.2em
+
+.ui.header
+  color #333
+  font-family 'Helvetica Neue', 'Open Sans', sans-serif;
+  font-weight 100
+  font-size 2.5em
+  padding 0
+
+.inverted .ui.header
+  color #ccc
+
+.ui.form .field > label
+  font-weight 200
+
+.inverted.page
+  .ui.form .ui.header
+    color rgba(255, 255, 255, 0.8)
+
+  .ui.dividing.header
+    border-bottom-color rgba(255, 255, 255, 0.2)
+
+  .ui.form .field > label
+    color rgba(255, 255, 255, 0.8)
+
+  .ui.form input[type="text"], .ui.form input[type="email"], .ui.form input[type="date"], .ui.form input[type="password"], .ui.form input[type="number"], .ui.form input[type="url"], .ui.form input[type="tel"], .ui.form textarea
+    background-color rgba(255, 255, 255, 0.4)
+
+  .ui.dimmer
+    background rgba(0, 0, 0, 0.4)
+
+.ui.inverted.dimmer
+  background rgba(255, 255, 255, 0.2)

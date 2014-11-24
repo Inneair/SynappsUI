@@ -1,0 +1,34 @@
+{
+    "name": "inneair-synappsui",
+    "homepage": "https://github.com/Inneair/SynappsUI",
+    "version": "1.1.0",
+    "main": [
+        "app/js/synapps/Array.js",
+        "app/js/OrigamiModule.js",
+        "app/js/editor/EditorModule.js",
+        "app/js/editor/Page.js",
+        "app/js/editor/PageController.js",
+        "app/js/editor/PageStore.js",
+        "app/js/studio/StudioModule.js",
+        "app/js/app-mockup.js"
+    ],
+    "authors": [
+        "Vincent Clair"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "~1.3.2",
+        "angular-resource": "~1.3.2",
+        "angular-ui-router": "~0.2.11",
+        "normalize.css": "~3.0.2",
+        "semantic-ui": "~1.0.0"
+    }
+}

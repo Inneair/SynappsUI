@@ -1,2 +1,0 @@
-# SynappsPackage - Read Me
-

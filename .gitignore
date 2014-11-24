@@ -1,5 +1,9 @@
-.project
-.sencha
-.settings
-build
-ext
+/.idea/
+/.settings/
+/bower_components/
+/build/
+/node_modules/
+/public/
+/**/.*.md.html
+/.buildpath
+/.project
