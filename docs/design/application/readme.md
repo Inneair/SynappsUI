@@ -7,9 +7,7 @@ serveur.
 Les scripts Javascript peuvent être des scripts de frameworks (AngularJS, ...), de librairies du marché (PLupload, ...),
 ou des scripts de l'application.
 
-## <a name="framework"></a>1. Le framework
-
-### 1.1. Initialisation
+## <a name="bootstrap"></a>1. Initialisation
 
 La première fois qu'un utilisateur souhaite accéder à l'interface web de l'application, il saisit une URL dans le
 navigateur (typiquement quelque chose comme `http://www.monapplication.com`). Après validation, le navigateur contacte
@@ -74,7 +72,7 @@ __Note__ : l'attribut `data-ui-view` provient du composant `angular-ui-router`. 
 proposé par défaut dans AngularJS (`angular-route`), et qui fonctionne avec l'attribut `data-ng-view`. Ces deux
 composants ne peuvent pas fonctionner conjointement, et seul l'un des deux peut être utilisé.
 
-### 1.2. Injection de dépendances
+## <a name="ioc"></a>2. Injection de dépendances
 
 L'injecteur de dépendances charge les définitions des modules, leurs fournisseurs, et récupère les instances de services
 quand celà est nécessaire. Il est utilisé lors de la création d'un contrôleur, d'un service, d'une fabrique d'objets,
@@ -84,7 +82,7 @@ le constructeur.
 Cet [article][angularjs-instantiation] explique en détail les différences entre un fournisseur, une fabrique, un
 service, un contrôleur, et leur instanciation.
 
-### 1.3. Structure du code source
+## <a name="code-layout"></a>3. Structure du code source
 
 La structure proposée ci-après pour le code source est intimement liée à l'utilisation de [Brunch][brunch].
 L'utilisation d'un autre outil de construction peut nécessiter la révision de cette structure.
@@ -127,36 +125,40 @@ brunch-config.coffee
 flo.js
 package.json
 ```
+- Le répertoire `app` contient les scripts Javascript, en dehors du sous-répertoire `assets`.
+- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, CSS, etc.).
+- Le répertoire `public` est généré automatiquement par Brunch lors de la compilation. Le serveur fb-flo scrute ce
+répertoire pour y détecter toute modification de fichier.
 
-#### 1.3.1. Fichiers de configuration
+### 3.1. Fichiers de configuration
 
 Le fichier `bower.json` contient la configuration du gestionnaire de packages Javascript [Bower][bower]. C'est un
 équivalent du gestionnaire de packages PHP [Composer][composer].
 
-#### 1.3.2. Vues HTML
+### 3.2. Vues HTML
 
 Les fichiers contenant les vues HTML doivent être déposés dans le répertoire `app/assets`. Le cas échéant, ils peuvent être
 classés par domaine/sous-domaine métier. La vue principale de l'interface graphique est située dans le fichier
 `app/assets/index.html`. Ce fichier est chargé quelque soit l'URL saisie par l'utilisateur.
 
-#### 1.3.3. Feuilles de style CSS
+### 3.3. Feuilles de style CSS
 
 Les feuilles de style doivent être déposées dans le répertoire `app/assets/css`. L'organisation des feuilles de style
 est libre, mais elle doit permettre de gérer différent thèmes graphiques. Pour celà, une structure de sous-répertoires
 de "thème" peut être avantageuse.
 
-#### 1.3.4. Scripts Javascript
+### 3.4. Scripts Javascript
 
 Les scripts Javascript doivent être déposés dans le répertoire `app`, et en dehors du répertoire `app/assets`. La
 contrainte principale d'organisation est d'utiliser un fichier par composant :
 modules/contrôleurs/services/fabriques/modèles AngularJS, ou composants libres. Tous les fichiers Javascript doivent
-débuter par la directive `"use strict";`.
+débuter par la directive `'use strict';`.
 
-### 1.4. Modèles de programmation
+## <a name="templates"></a>4. Modèles de programmation
 
-#### 1.4.1. Modules
+### 4.1. Modules
 
-De nos jours, les applications sont structurées en module, afin de faciliter la maintenance, l'évolution, et limiter le
+De nos jours, les applications sont structurées en modules, afin de faciliter la maintenance, l'évolution, et limiter le
 couplage entre les composants. Le framework AngularJS fournit un mécanisme permettant de répartir les composants dans
 des modules. Un module AngularJS est un objet qui regroupe logiquement un ensemble de fonctionnalités. La structure
 préconisée est d'utiliser un fichier pour la déclaration de chaque module, soit un fichier pour le module de
@@ -166,21 +168,27 @@ libre, et ce même pour le fichier du module de l'application, `app\ApplicationM
 Les modules contiennent la configuration de l'application, du routage (déclaration des "états" possibles), et de
 façon générale de certains services.
 
-##### a) Module d'application
+#### a) Module d'application
 ```javascript
 'use strict';
 
-// Create the application module, and declare its dependencies (modules).
+// Create the application module. The module has 2 dependencies:
+// - AngularJS UI Router is used to configure routing states, and for transitions between different screens.
+// - 'myapplication.mymodule' module is a module in the application. Any other module added in the application shall be
+appended to this list of dependencies.
 angular.module('myapplication', [
     'ui.router',
-    'inneair.origami.studio',
-    'inneair.origami.editor'
+    'myapplication.mymodule',
 ]).config([
     '$locationProvider',
     '$urlRouterProvider',
     '$stateProvider',
     function($locationProvider, $urlRouterProvider, $stateProvider) {
+        // As a general guide, application configuration shall occur here.
+
         // Tries to use HTML5 history component for URLs, if supported. Use anchors as a fallback.
+        // Every screen transition will lead to the browser's address bar to be updated with the new URL. Using the
+        // HTML5 mode will produce real path, instead of anchors (for legacy browsers only).
         $locationProvider.html5Mode(true);
 
         // Routing rules.
@@ -188,8 +196,9 @@ angular.module('myapplication', [
         // A state is activated when its path matches the path in the browser URL.
         $urlRouterProvider.otherwise('/editor');
 
-        // The 'origami' state is the root router state, it declares two views are existing simultaneously, and
-        // implicitly targets the topmost 'data-ui-view' HTML attribute.
+        // The 'origami' state is the root router state. It can be freely chosen, and is not used elsewhere in the code.
+        // It declares two views are existing simultaneously, and implicitly targets the topmost 'data-ui-view' HTML
+        // attribute.
         $stateProvider.state({
             name: 'origami',
             views: {
@@ -204,12 +213,13 @@ angular.module('myapplication', [
 ]);
 ```
 
-##### b) Module métier
+#### b) Module métier
 ```javascript
 'use strict';
 
-// Create the editor module, and declare its dependencies (modules).
-angular.module('mymodule', [
+// Create the application module. The module has 1 dependency:
+// - AngularJS Resource is used somewhere in the module (see section about DAO services).
+angular.module('myapplication.mymodule', [
     'ngResource'
 ]).config([
     '$urlRouterProvider',
@@ -217,34 +227,34 @@ angular.module('mymodule', [
     function($urlRouterProvider, $stateProvider) {
         // Routing rules.
         // Default URL for the module.
-        $urlRouterProvider.when('/editor', '/editor/page');
+        $urlRouterProvider.when('/mymodule', '/mymodule/apage');
 
-        // The 'editor' state is the root router state of the editor module.
+        // The 'mymodule' state is the root router state of the editor module.
         // The 'page' state matches the display of the list of pages.
         $stateProvider.state({
-            name: 'editor',
+            name: 'mymodule-state',
             parent: 'origami',
-            url: '/editor',
+            url: '/mymodule',
             views: {
                 'content@': {
                     template: '<div data-ui-view></div>'
                 }
             }
         }).state({
-            name: 'page',
-            parent: 'editor',
-            url: '/page',
-            templateUrl: '/editor/page-list.html',
+            name: 'apage-state',
+            parent: 'mymodule',
+            url: '/apage',
+            templateUrl: '/mymodule/page-list.html',
             controller: 'MyModuleController'
         });
     }
 ]);
 ```
 
-Il est important de noter que la vue dans laquelle le template de l'état `editor` est affiché, est celle identifiée par
-`content@` dans la page `app/assets/index.html`.
+Il est important de noter que la vue dans laquelle le template de l'état `mymodule-state` est affiché, est celle
+identifiée par `content@` dans la page `app/assets/index.html`.
 
-##### c) Configuration Brunch
+#### c) Configuration Brunch
 
 L'outil de construction de l'application doit être configuré afin que les fichiers des modules soient agrégés en premier
 dans le script optimisé qui est produit à la fin de la construction. Les fichiers de modules créent réellement les
@@ -275,18 +285,18 @@ exports.config =
             joinTo: 'js/app-1.0.0.js'
 ```
 
-#### 1.4.2. Modèles métier
+### 4.2. Modèles métier
 
 Un modèle métier est un objet qui regroupe logiquement un ensemble de propriétés et de comportement, et qui représente
 un concept traité par l'application. Le nom des fichiers contenant l'implémentation d'un modèle métier respecte la
 syntaxe `<NomDuModèle>.js`.
 
-##### a) Sans dépendance
+#### a) Sans dépendance
 
 ```javascript
-"use strict";
+'use strict';
 
-angular.module('mymodule').factory(
+angular.module('myapplication.mymodule').factory(
     'Wheel',
     [function WheelFactory() {
         function Wheel(data) {
@@ -312,12 +322,12 @@ angular.module('mymodule').factory(
 );
 ```
 
-##### b) Avec dépendance
+#### b) Avec dépendance
 
 ```javascript
-"use strict";
+'use strict';
 
-angular.module('mymodule').factory(
+angular.module('myapplication.mymodule').factory(
     'Bike',
     ['Wheel', function BikeFactory(Wheel) {
         function Bike(data) {
@@ -343,17 +353,17 @@ angular.module('mymodule').factory(
 );
 ```
 
-#### 1.4.3. Services
+### 4.3. Services
 
-##### a) Modèle
+#### a) Service métier
 
 Qu'il soit métier ou purement technique, un service peut-être créé de 3 façons avec AngularJS. La solution préconisée
 ci-après est la seule permettant de pousser une configuration à l'initialisation de l'application. Par soucis
-d'homogénéïté et de clarté du code, tous les services devront adopter le modèle d'implémentation suivant :
+d'homogénéïté et de clarté du code, tous les services métier devront adopter le modèle d'implémentation suivant :
 ```javascript
-"use strict";
+'use strict';
 
-angular.module('mymodule').provider(
+angular.module('myapplication.mymodule').provider(
     'BikeManufacturer',
     function BikeManufacturerProvider() {
         this.maxNumberOfBike = null;
@@ -362,6 +372,8 @@ angular.module('mymodule').provider(
             this.maxNumberOfBike = maxNumberOfBike;
         };
 
+        // The 'bikeStore' property is an array of 'bikes', but could be replaced with a reference on the BikeStore
+        // service introduced hereafter.
         this.$get = ['Bike', function BikeManufacturerFactory(Bike) {
             function BikeManufacturer(data) {
                 this.maxNumberOfBike = 1;
@@ -386,7 +398,49 @@ angular.module('mymodule').provider(
 );
 ```
 
-##### b) Configuration
+#### b) Service d'accès aux données
+
+Par soucis d'homogénéïté et de clarté du code, tous les services d'accès aux données devront adopter le modèle
+d'implémentation suivant :
+```javascript
+'use strict';
+
+angular.module('myapplication.mymodule').provider(
+    'BikeStore',
+    function BikeStoreProvider() {
+        this.resourceUrl = null;
+
+        this.setResourceUrl = function(resourceUrl) {
+            this.resourceUrl = resourceUrl;
+        };
+
+        this.$get = ['$resource', 'Bike', function BikeStoreFactory($resource, Bike) {
+            function BikeStore(data) {
+                this.resource = null;
+                this.bikes = [];
+
+                if (data.hasOwnProperty('resource')) {
+                    this.resource = data.resource;
+                }
+            }
+
+            BikeStore.prototype.reload = function() {
+                var self = this;
+                self.resource.query(function(bikes) {
+                    self.bikes.clear();
+                    for (var i = 0; i < bikes.length; i++) {
+                        self.bikes.push(new Bike(bikes[i]));
+                    }
+                });
+            };
+
+            return new BikeStore({resource: $resource(this.resourceUrl)});
+        }];
+    }
+);
+```
+
+#### c) Configuration
 
 La configuration du service se fait au travers du 'provider' auto-généré par AngularJS, typiquement injecté dans le
 module d'application :
@@ -396,7 +450,7 @@ module d'application :
 // Create the application module, and declare its dependencies.
 angular.module('myapplication', [
     'ui.router',
-    'mymodule',
+    'myapplication.mymodule',
 ]).config([
     'BikeManufacturerProvider',
     function(bikeManufacturerProvider) {
@@ -405,14 +459,15 @@ angular.module('myapplication', [
 ]);
 ```
 
-#### 1.4.4. Contrôleur
+### 4.4. Contrôleur
 
-Les contrôleur AngularJS servent à faire le lien entre le modèle de visualisation (vue HTML), les modèles contenant les
-informations à afficher, et les services. Ils ne comportent aucun traitement métier.
+Les contrôleurs AngularJS servent à faire le lien entre le modèle de visualisation (vue HTML), les modèles contenant les
+informations à afficher, et les services. Ils ne comportent aucun traitement métier. Les contrôleurs possèdent une
+méthode pour chaque action exécutée sur l'interface et chaque donnée 'calculée' à afficher.
 ```javascript
 'use strict';
 
-angular.module('mymodule').controller(
+angular.module('myapplication.mymodule').controller(
     'BikeController',
     ['$scope', 'BikeManufacturer', function BikeController($scope, bikeManufacturer) {
         $scope.maxNumberOfBike = bikeManufacturer.maxNumberOfBike;

@@ -5,7 +5,16 @@ var flo = require('fb-flo'),
     path = require('path');
 
 var dir = path.resolve(__dirname, 'public');
-var server = flo(dir, { glob: ['**/*.js', '**/*.css'] }, resolver);
+var server = flo(
+    dir,
+    {
+        host: 'localhost',
+        port: 65000,
+        verbose: false,
+        glob: ['**/*.js', '**/*.css']
+    },
+    resolver
+);
 
 server.once('ready', function() {
     console.log('fb-flo server ready');
@@ -17,7 +26,7 @@ function resolver(filepath, callback) {
     var fullPath = path.resolve(dir, filepath);
     callback({
         resourceURL: filepath,
-        reload: !filepath.match(/\.(css|js)$/),
+        reload: !filepath.match(/^.*\.(js|css)$/),
         contents: fs.readFileSync(fullPath).toString()
     });
 }

@@ -1,13 +1,23 @@
 # Processus de développement
 
-## <a name="sourcelayout"></a>1. Structure du code source
-- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, CSS, etc.).
-- Le répertoire `app` contient les scripts Javascript, en dehors du sous-répertoire `assets`.
-- Le répertoire `public` est généré automatiquement par Brunch lors de la compilation. Le serveur fb-flo scrute ce
-répertoire pour y détecter toute modification de fichier.
+## <a name="commands"></a>1. Commandes élémentaires
 
-## <a name="commands"></a>2. Commandes élémentaires
-### 2.1. Compilation
+### 1.1. Ajout de dépendances
+
+```sh
+bower install <package> [--save | --save-dev]
+```
+- L'option `--save` permet d'enregistrer la dépendance dans le fichier `bower.json`.
+- L'option `--save-dev` permet d'enregistrer la dépendance dans le fichier `bower.json`, en tant que dépendance de
+développement uniquement (inutile à l'exécution).
+
+Les dépendances sont téléchargées et déployées dans le répertoire `bower_components` du projet.
+
+### 1.2. Mise à jour de dépendances
+
+__TBC__
+
+### 1.3. Compilation
 La compilation des script Javascript et des feuilles de Style CSS s'effectue à l'aide d'une des commandes suivantes :
 ```sh
 brunch build [--production]
@@ -16,11 +26,15 @@ brunch b [-P]
 Les options `-P` et `--production` permettent d'optimiser la compilation en vue d'un déploiement sur un environnement de
 production.
 
-### 2.2. Publication d'un package
+### 1.4. Publication de packages
+La commande suivante permet de déclarer un référentiel Git comme source de package pour une application donnée. Cette
+commande doit être exécutée une seule fois pour toute la durée de vie du projet, Bower se chargeant de trouver les
+packages disponibles à partir des tags qui ont été créés dans le référentiel Git.
+```sh
+bower register <application-name> <git-endpoint>
+```
 
-__TBD__
-
-## <a name="injection"></a>3. Injection à la volée
+## <a name="injection"></a>2. Injection à la volée
 L'injection à la volée permet de rafraîchir automatiquement une page visualisée dans un navigateur Chrome, dès qu'une
 modification a lieu sur une des ressources utilisées dans la page. Les étapes décrites ci-dessous ne sont pas
 obligatoires pour développer, mais peuvent grandement accélérer le test de modifications
@@ -52,7 +66,7 @@ type Apache, ou le serveur HTTP Brunch situé par défaut à l'adresse <http://l
 - Vérifier que l'extension fb-flo est activée (option dans l'onglet 'flo' des outils de développement).
 
 
-## <a name="developpement"></a>4. Développement
+## <a name="developpement"></a>3. Développement
 Si l'injection à la volée a été activée (cf. paragraphe précédent), les fichiers sources sont automatiquement compilés
 et le résultat de la compilation ré-injecté dans le navigateur Chrome, dès qu'une modification a lieu. Il n'est alors
 plus nécessaire de rafraîchir la page (cas des scripts Javascript et des feuilles de style CSS).
