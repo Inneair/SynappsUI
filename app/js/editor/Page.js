@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 angular.module('inneair.origami.editor').factory(
     'Page',

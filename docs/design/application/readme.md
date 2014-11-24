@@ -100,24 +100,29 @@ L'utilisation d'un autre outil de construction peut nécessiter la révision de 
             /subdomain1
                 view11.html
                 ...
-    /domain1
-        Domain1Module.js
-        /subdomain1
-            Model11.js
-            Model12.js
-            Model11Controller.js
-            Model11Store.js
-            Model12Manager.js
-        /subdomain2
-            Model21.js
+    /css
+        /theme1/
+            stylesheet1.styl
             ...
-    /domain2
-        Domain2Module.js
-        ...
-    /library1
-        Object1.js
-        Object2.js
-    ApplicationModule.js
+    /js
+        /domain1
+            Domain1Module.js
+            /subdomain1
+                Model11.js
+                Model12.js
+                Model11Controller.js
+                Model11Store.js
+                Model12Manager.js
+            /subdomain2
+                Model21.js
+                ...
+        /domain2
+            Domain2Module.js
+            ...
+        /library1
+            Object1.js
+            Object2.js
+        ApplicationModule.js
 /bower_components
 /public
 bower.json
@@ -125,8 +130,11 @@ brunch-config.coffee
 flo.js
 package.json
 ```
-- Le répertoire `app` contient les scripts Javascript, en dehors du sous-répertoire `assets`.
-- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, CSS, etc.).
+- Le répertoire `app/assets` contient les ressources non compilées dites "statiques" (images, pages HTML, feuilles de
+style CSS, etc.).
+- Le répertoire `app/css` contient toutes les feuilles de style CSS de l'application qui nécessitent un pré-traitement
+(tels que les feuilles de style Stylus).
+- Le répertoire `app/js` contient tous les scripts Javascript de l'application.
 - Le répertoire `public` est généré automatiquement par Brunch lors de la compilation. Le serveur fb-flo scrute ce
 répertoire pour y détecter toute modification de fichier.
 

@@ -1,7 +1,17 @@
 {
     "name": "inneair-synappsui",
     "homepage": "https://github.com/Inneair/SynappsUI",
-    "main": "public/js/app.js",
+    "version": "1.1.0",
+    "main": [
+        "app/js/synapps/Array.js",
+        "app/js/OrigamiModule.js",
+        "app/js/editor/EditorModule.js",
+        "app/js/editor/Page.js",
+        "app/js/editor/PageController.js",
+        "app/js/editor/PageStore.js",
+        "app/js/studio/StudioModule.js",
+        "app/js/app-mockup.js"
+    ],
     "authors": [
         "Vincent Clair"
     ],

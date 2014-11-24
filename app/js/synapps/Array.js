@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Clears an array.
