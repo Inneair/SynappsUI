@@ -52,7 +52,7 @@ temps de développement, et ainsi réduire les coûts de production.
 [application-bootstrap]: <application/readme.md#bootstrap> (Initialisation)
 [application-ioc]: <application/readme.md#ioc> (Injection de dépendances)
 [application-codelayout]: <application/readme.md#code-layout> (Structure du code source)
-[application-templates]: <application/readme.md#bootstrap> (Modèles de programmation)
+[application-templates]: <application/readme.md#templates> (Modèles de programmation)
 
 [dev-environment]: <dev-environment.md> (Environnement de développement)
 

@@ -1,0 +1,12 @@
+<h1>Liste de pages</h1>
+<ul>
+    <li data-ng-repeat="page in pages">{{page.name}} (ID {{page.id}}) is online : {{page.online}} (dump: {{page.trace()}})</li>
+</ul>
+
+<h1>Nombre maximum de vélos: {{maxNumberOfBike}}</h1>
+<div data-ng-repeat="bike in bikes">
+    <h2>{{bike.brandName}} | {{bike.modelName}} : {{bike.getNumberOfWheels()}} roues</h2>
+    <ul data-ng-show="bike.getNumberOfWheels() > 0">
+        <li data-ng-repeat="wheel in bike.wheels">{{wheel.getProductName()}}</li>
+    </ul>
+</div>
